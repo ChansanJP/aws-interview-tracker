@@ -1,8 +1,22 @@
 from flask import Flask, request
+import json
+import os
 
 app = Flask(__name__)
 
-applications = []
+DATA_FILE = "applications.json"
+
+def load_applications():
+    if os.path.exists(DATA_FILE):
+        with open(DATA_FILE, "r") as file:
+            return json.load(file)
+    return []
+
+def save_applications(applications):
+    with open(DATA_FILE, "w") as file:
+        json.dump(applications, file, indent=2)
+
+applications = load_applications()
 
 @app.route("/", methods=["GET", "POST"])
 def home():
@@ -19,6 +33,7 @@ def home():
                 "status": status,
                 "notes": notes
             })
+            save_applications(applications)
 
     items = ""
     for item in applications:
