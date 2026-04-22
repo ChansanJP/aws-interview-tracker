@@ -7,13 +7,15 @@ applications = []
 @app.route("/", methods=["GET", "POST"])
 def home():
     if request.method == "POST":
-        company = request.form.get("company")
-        status = request.form.get("status")
+        company = request.form.get("company", "").strip()
+        job_title = request.form.get("job_title", "").strip()
+        status = request.form.get("status", "").strip()
         notes = request.form.get("notes", "").strip()
 
-        if company and status:
+        if company and job_title and status:
             applications.append({
                 "company": company,
+                "job_title": job_title,
                 "status": status,
                 "notes": notes
             })
@@ -21,14 +23,15 @@ def home():
     items = ""
     for item in applications:
         notes_html = f"<br><small>{item['notes']}</small>" if item["notes"] else ""
-        items += f"<li><strong>{item['company']}</strong> - {item['status']}{notes_html}</li><br>"
+        items += f"<li><strong>{item['company']}</strong> - {item['job_title']} - {item['status']}{notes_html}</li><br>"
 
     return f"""
     <h1>AWS Interview Tracker</h1>
-    <p>Add a company, status, and notes below.</p>
+    <p>Add a company, job title, status, and notes below.</p>
 
     <form method="POST">
         <input type="text" name="company" placeholder="Enter company name">
+        <input type="text" name="job_title" placeholder="Enter job title">
         <select name="status">
             <option value="Applied">Applied</option>
             <option value="Interview">Interview</option>
