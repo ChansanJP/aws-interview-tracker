@@ -10,5 +10,23 @@
     "job_title": "Cloud Specialist",
     "status": "Applied",
     "notes": ""
+  },
+  {
+    "company": "Test Company",
+    "job_title": "Support Rep",
+    "status": "Applied",
+    "notes": "first saved entry"
+  },
+  {
+    "company": "Test Company",
+    "job_title": "Support Rep",
+    "status": "Applied",
+    "notes": "first saved entry"
+  },
+  {
+    "company": "Test Company",
+    "job_title": "Support Rep",
+    "status": "Applied",
+    "notes": "first saved entry"
   }
 ]
