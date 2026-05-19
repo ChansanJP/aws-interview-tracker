@@ -2,6 +2,9 @@
 
 A simple Flask app to track job applications.
 
+## Screenshot
+![AWS Interview Tracker live on EC2](ec2-live-app.png)
+
 ## Features
 - Add company name
 - Add job title
